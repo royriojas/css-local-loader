@@ -1,43 +1,107 @@
-# webpack-css-loader
-a cli tool to detect if a JSON file have changed since last time it was seen
+# css-local-loader
+a webpack loader to enhance the style-loader to throw when attempting to access undefined local classnames and allow
+combining both local and global css classnames.
+
+It can also be used as an alternative of the classnames module.
+
+IMPORTANT: This module uses ES6 Proxy to be able to throw when the selector required is undefined, in browsers without
+Proxy support this will just default to the normal behavior. In any case the usage of the helper functions `cf` and `g`
+should still work on all browsers.
+
+## motivation
+check: https://github.com/css-modules/css-modules/issues/146
 
 **TODO:** Add tests
 
 ## install
 
 ```bash
-npm i -g webpack-css-loader
+npm i -D css-local-loader
 ```
 
 ## Usage
 
-```bash
-Usage: webpack-css-loader [options] jsonfile.json
-
-Options:
-  -x, --changed-cmd String  Command to execute if the file did change.
-  -n, --not-changed-cmd String  Command to execute if the file did not change.
-  --cache-id String         the cache id for this given command
-  -p, --paths [String]      the keys to check in the json file
-  -h, --help                Show this help
-  -v, --version             Outputs the version number
-  -q, --quiet               Show only the summary info - default: false
-  --colored-output          Use colored output in logs
-  --stack                   if true, uncaught errors will show the stack trace if available
+```javascript
+module: {
+  loaders: [{
+    // only files that match .m.scss
+    // this is to make the transition easier
+    // since now the code will change from
+    //
+    // import styles from './file.scss'
+    // styles.foo // might be undefined
+    //
+    // to
+    //
+    // import { locals as styles } from './file.m.scss'
+    // styles.foo // will throw if foo is undefined
+    //
+    test: /\.m\.scss$/,
+    loader: 'css-local',
+  },
+  // important style loader should come after
+  {
+    test: /\.scss$/,
+    exclude: /node_modules/,
+    loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap',
+  }]
+}
 ```
 
-## Example
+## cf (classFor) an g (globalClassFor)
 
-```bash
-# install deps only if the package.json `devDependencies` or `dependencies` have changed
-# this will only execute `npm i` on the current directory if the dependencies changed
-webpack-css-loader package.json -p 'devDependencies,dependencies' -x 'npm i'
+Two functions are also exported when a file containing local css is imported:
 
-# just print to the stdout if the file or section of the json file has changed
-# this will print `true` to the stdout if the files changed or `false` if the
-# file or section of the file hasn't changed. `-q,--quiet`
-# will suppress all other output but the result of the check
-webpack-css-loader package.json -p 'devDependencies,dependencies' -q
+### cf (classFor)
+
+`cf` is abbreviation for `classFor`. This method will return the local identifier for the provided className.
+
+Example:
+
+Given `test.m.scss`
+
+```
+.test {
+  display: block;
+}
+
+.demo {
+  display: inline-block;
+}
+
+.foo {
+  width: 100%;
+}
+```
+
+then using `cf`:
+
+```javascript
+import { locals, cf } from './test.m.scss';
+
+// NOTE: __xxxx is just a placeholder for whatever renaming strategy is selected
+
+locals.test; // will return something like test__xxxx
+locals.foo; // will return something like foo__xxxx
+locals.demo // will return something like demo__xxxx
+locals.iDontExist // will throw becasue it does not exists
+
+cf('test demo'); // will return something like 'test__xxxx demo__xxx'
+cf('test notfound') // will throw because of not found
+cf({ test: true, notFound: false }); // will not throw since notFound is not accessed
+cf({ test: true, demo: true }); // will return something like 'test__xxxx demo__xxx'
+cf({ test: true, notFound: true }); // will throw because notFound is not defined in the file
+```
+
+### g or (globalClassFor)
+
+`g` is the abbreviation for `globalClassFor` this is handy when a global class need to be mixed with the local classes.
+This function return an object, so it is actually intended to be used in combination with `cf` like described below
+
+```javascript
+import { cf, g } from './test.m.css';
+cf('test demo', g('global classes')) // will return something like 'test__xxxx demo__xxxx global classes'
+cf('test demo', g({ globalClass: true, button: false })); // will return 'test__xxxx demo__xxxx globalClass'
 ```
 
 ## Changelog

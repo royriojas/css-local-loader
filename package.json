@@ -1,7 +1,7 @@
 {
-  "name": "webpack-css-loader",
+  "name": "css-local-loader",
   "version": "1.0.0",
-  "description": "A small cli util to detect if the passed JSON file have changed",
+  "description": "a webpack loader to enhance the style-loader to throw when attempting to access non existant selectors and allow combining both local and global css classes.",
   "prepush": [
     "npm run check"
   ],
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/royriojas/webpack-css-loader.git"
+    "url": "https://github.com/royriojas/css-local-loader.git"
   },
   "keywords": [
     "webpack loader",
@@ -45,9 +45,9 @@
   "author": "royriojas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/royriojas/webpack-css-loader/issues"
+    "url": "https://github.com/royriojas/css-local-loader/issues"
   },
-  "homepage": "https://github.com/royriojas/webpack-css-loader#readme",
+  "homepage": "https://github.com/royriojas/css-local-loader#readme",
   "devDependencies": {
     "babel-cli": "6.11.4",
     "babel-eslint": "^6.1.2",
