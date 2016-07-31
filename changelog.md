@@ -1,36 +1,15 @@
 
-# have-changed - Changelog
-## v1.0.5
-- **Bug Fixes**
-  - make sure the cache is persisted to file - [73dbfda]( https://github.com/royriojas/have-changed/commit/73dbfda ), [royriojas](https://github.com/royriojas), 22/12/2015 22:57:21
-
-    
-## v1.0.4
-- **Features**
-  - Add option to print to stdout the result of the check - [78e6f8e]( https://github.com/royriojas/have-changed/commit/78e6f8e ), [royriojas](https://github.com/royriojas), 22/12/2015 22:36:01
-
-    
-## v1.0.3
-- **Bug Fixes**
-  - Remove babel-presets from dependencies - [b3b4669]( https://github.com/royriojas/have-changed/commit/b3b4669 ), [royriojas](https://github.com/royriojas), 22/12/2015 21:57:11
-
-    
-## v1.0.2
-- **Bug Fixes**
-  - add force option - [f4543fb]( https://github.com/royriojas/have-changed/commit/f4543fb ), [royriojas](https://github.com/royriojas), 22/12/2015 21:28:25
-
-    
+# css-local-loader - Changelog
 ## v1.0.1
 - **Bug Fixes**
-  - Add missing dependency - [a8c9d57]( https://github.com/royriojas/have-changed/commit/a8c9d57 ), [royriojas](https://github.com/royriojas), 22/12/2015 21:15:27
+  - use the loader as string - [22cd32f]( https://github.com/royriojas/css-local-loader/commit/22cd32f ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 06:02:38
 
     
-## v1.0.0
-- **Features**
-  - first working version - [e4a6765]( https://github.com/royriojas/have-changed/commit/e4a6765 ), [royriojas](https://github.com/royriojas), 22/12/2015 21:12:04
+- **Refactoring**
+  - clean up module - [41f1d09]( https://github.com/royriojas/css-local-loader/commit/41f1d09 ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 05:55:00
 
     
-- **Other changes**
-  - Initial commit - [c722210]( https://github.com/royriojas/have-changed/commit/c722210 ), [Roy Riojas](https://github.com/Roy Riojas), 22/12/2015 15:42:57
+- **Build Scripts Changes**
+  - First commit - [b15b87a]( https://github.com/royriojas/css-local-loader/commit/b15b87a ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 04:54:20
 
     
