@@ -1,0 +1,67 @@
+{
+  "name": "webpack-css-loader",
+  "version": "1.0.0",
+  "description": "A small cli util to detect if the passed JSON file have changed",
+  "prepush": [
+    "npm run check"
+  ],
+  "precommit": [
+    "npm run check"
+  ],
+  "main": "dist/css-local.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "beautify": "esbeautifier 'src/**/*.js' 'specs/**/*.js'",
+    "beautify-check": "npm run beautify -- -k",
+    "eslint": "eslint -f 'node_modules/eslint-friendly-formatter' --cache --cache-location='.cache/' 'src/**/*.js' 'specs/**/*.js'",
+    "eslint-fix": "npm run eslint -- --fix",
+    "autofix": "npm run beautify && npm run eslint-fix",
+    "check": "npm run eslint",
+    "compile": "rm -rf dist && babel src -d dist",
+    "dev": "babel src -d dist --watch",
+    "prepublish": "npm run compile",
+    "changelog": "changelogx -f markdown -o ./changelog.md",
+    "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog' --no-verify",
+    "install-hooks": "prepush install && changelogx install-hook && precommit install",
+    "pre-v": "npm run check",
+    "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
+    "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
+    "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/royriojas/webpack-css-loader.git"
+  },
+  "keywords": [
+    "webpack loader",
+    "webpack",
+    "loader",
+    "css modules",
+    "local css"
+  ],
+  "author": "royriojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royriojas/webpack-css-loader/issues"
+  },
+  "homepage": "https://github.com/royriojas/webpack-css-loader#readme",
+  "devDependencies": {
+    "babel-cli": "6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-stage-0": "6.5.0",
+    "changelogx": "^2.0.1",
+    "esbeautifier": "10.1.1",
+    "eslint": "^3.0.1",
+    "eslint-friendly-formatter": "^2.0.6",
+    "eslint-plugin-import": "^1.10.2",
+    "precommit": "^1.2.1",
+    "prepush": "^3.1.10"
+  },
+  "dependencies": {
+    "loader-utils": "^0.2.15"
+  }
+}
