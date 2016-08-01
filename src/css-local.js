@@ -1,7 +1,6 @@
 import loaderUtils from 'loader-utils';
 import path from 'path';
 
-// using module.exports so the loader can be used by webpack
 module.exports = function cssLocalLoader(source, map) {
   this.cacheable();
   const pathToSheet = loaderUtils.stringifyRequest(this, require.resolve(path.join(__dirname, './sheet.js')));

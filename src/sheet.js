@@ -1,6 +1,3 @@
-// Please check here for an explanation of this module
-// https://github.com/Redisrupt/red/wiki/Local-CSS-with-CSS-Modules
-
 const isObject = (obj) => obj !== null && typeof obj === 'object';
 
 export default function sheet(locals) {
