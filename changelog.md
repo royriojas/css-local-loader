@@ -1,5 +1,10 @@
 
 # css-local-loader - Changelog
+## v1.0.2
+- **Refactoring**
+  - remove comments - [8092d70]( https://github.com/royriojas/css-local-loader/commit/8092d70 ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 23:45:41
+
+    
 ## v1.0.1
 - **Bug Fixes**
   - use the loader as string - [22cd32f]( https://github.com/royriojas/css-local-loader/commit/22cd32f ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 06:02:38
