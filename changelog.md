@@ -1,5 +1,10 @@
 
 # css-local-loader - Changelog
+## v1.0.3
+- **Refactoring**
+  - Fix to properly require the module from the loader - [bc36562]( https://github.com/royriojas/css-local-loader/commit/bc36562 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 00:48:00
+
+    
 ## v1.0.2
 - **Refactoring**
   - remove comments - [8092d70]( https://github.com/royriojas/css-local-loader/commit/8092d70 ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 23:45:41
