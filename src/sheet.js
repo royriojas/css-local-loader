@@ -1,6 +1,6 @@
 const isObject = (obj) => obj !== null && typeof obj === 'object';
 
-export default function sheet(locals) {
+function sheet(locals) {
   if (!isObject(locals)) {
     throw new Error('no locals found');
   }
@@ -80,3 +80,5 @@ export default function sheet(locals) {
 
   return ins;
 }
+
+module.exports = sheet;
