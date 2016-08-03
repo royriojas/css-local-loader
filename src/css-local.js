@@ -8,7 +8,9 @@ module.exports = function cssLocalLoader(source, map) {
 
   var sheet = require(${pathToSheet})(module.exports);
 
-  if (typeof global.Proxy !== 'undefined') {
+  if (typeof global.Proxy === 'undefined' || process.env.NODE_ENV === 'production') {
+    sheet.locals = module.exports;
+  } else {
     sheet.locals =  new Proxy(module.exports, {
       get: function(target, name) {
         return sheet.cf(name)
