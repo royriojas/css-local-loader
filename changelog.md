@@ -1,5 +1,10 @@
 
 # css-local-loader - Changelog
+## v1.0.4
+- **Features**
+  - Do not use Proxy in production or in browsers that don't support Proxy - [c0827cd]( https://github.com/royriojas/css-local-loader/commit/c0827cd ), [Roy Riojas](https://github.com/Roy Riojas), 03/08/2016 03:04:44
+
+    
 ## v1.0.3
 - **Refactoring**
   - Fix to properly require the module from the loader - [bc36562]( https://github.com/royriojas/css-local-loader/commit/bc36562 ), [Roy Riojas](https://github.com/Roy Riojas), 01/08/2016 00:48:00
