@@ -19,6 +19,10 @@ module.exports = function cssLocalLoader(source, map) {
   }
 
   module.exports = sheet;
+
+  if (module.hot && process.env.NODE_ENV !== 'production') {
+    module.hot.accept();
+  }
 `;
 
   source = `${source}\n\n${requireWrapper}`;
