@@ -1,5 +1,10 @@
 
 # css-local-loader - Changelog
+## v1.0.5
+- **Bug Fixes**
+  - missing hot.module.accept to avoid modules couldn't be hot updated error - [f576336]( https://github.com/royriojas/css-local-loader/commit/f576336 ), [Roy Riojas](https://github.com/Roy Riojas), 09/08/2016 19:13:33
+
+    
 ## v1.0.4
 - **Features**
   - Do not use Proxy in production or in browsers that don't support Proxy - [c0827cd]( https://github.com/royriojas/css-local-loader/commit/c0827cd ), [Roy Riojas](https://github.com/Roy Riojas), 03/08/2016 03:04:44
