@@ -1,6 +1,6 @@
 {
   "name": "css-local-loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a webpack loader to enhance the style-loader to throw when attempting to access non existant selectors and allow combining both local and global css classes.",
   "prepush": [
     "npm run check"
